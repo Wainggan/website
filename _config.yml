@@ -1,0 +1,8 @@
+collections:
+
+name: "parchi's dumpster fire"
+
+url: "https://parchii.neocities.org"
+plugins:
+  - jekyll-sitemap
+  - jekyll-feed
