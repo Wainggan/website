@@ -21,8 +21,8 @@ body>* {
 nav {
 	position: fixed;
 	right: 0em;
-	max-width: 16em;
-	max-height: min(30em, calc(100% - 8em));
+	max-width: 20em;
+	max-height: min(40em, calc(100% - 8em));
 	overflow-y: scroll;
 }
 
@@ -47,6 +47,9 @@ nav {
 	border-radius: 4px;
 	background-color: #222a;
 	padding: 1em;
+
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 
