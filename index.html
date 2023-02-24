@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Home
+title: "parchi's dumpster fire"
 ---
 
 <div class="box">
@@ -8,7 +8,7 @@ title: Home
 </div>
 
 <div class="box">
-	<p>welcome to my little corner of the internet!</p>
+	<p>welcome to my haphazardly put together little corner of the internet!</p>
 	<hr>
 	<p>
 		i'm a wip programmer, music writer, and game designer. <br>
@@ -19,11 +19,31 @@ title: Home
 		i prefer Parchi.
 	</p>
 	<p>
+		this site was put together using whatever html knowledge I happened to know, so i apologise if the 
+		layout is a bit odd or broken. yes, i know the navigation bar is too far from the main content. <br/>
+
 		i plan to use this site as a personal outlet for whatever my slightly wacky brain comes up with, the site is
 		only public to pay my tribute to the entropy of the internet. <br> maybe i'll be tangibly useful by talking
 		educational things about computer science, game design, drawing, music production, as I continually learn more
 		about the stuff. <br>
-
-		i'll also eventually move a few of my web games/projects here, so that'll be fun.
 	</p>
+	<p>expect a lot of todo's to be littered around.</p>
+</div>
+
+<div class="box">
+	updates
+	<hr>
+	<div style="max-height: 18em; overflow-y: scroll;">
+		{% for post in site.data.update %}
+		<div class="card">
+			{{ post.date }}
+			<hr>
+			{{ post.text }}
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+<div class="box">
+	insert something here
 </div>

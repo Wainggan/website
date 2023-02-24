@@ -1,5 +1,5 @@
 body {
-	/*background-color: #222;*/
+	background-color: #252b37;
 	color: #edd;
 	font-family: "Trebuchet MS", Verdana, sans-serif;
 	font-size: 100%;
@@ -15,14 +15,15 @@ body {
 }
 
 body>* {
-	max-width: min(calc(100% - 30em), 40em);
+	max-width: min(calc(100% - 35em), 50em);
 }
 
 nav {
 	position: fixed;
 	right: 0em;
 	max-width: 20em;
-	max-height: min(40em, calc(100% - 8em));
+	min-width: 20em;
+	max-height: min(50em, calc(100% - 8em));
 	overflow-y: scroll;
 }
 
@@ -52,6 +53,14 @@ nav {
 	margin-bottom: 1em;
 }
 
+.card {
+	border: 1px dashed #577;
+	border-radius: 2px;
+	/*background-color: #222;*/
+	padding: 0.5em;
+	margin-top: 0.5em;
+}
+
 
 @media (max-width: 60em) {
 	body>* {
@@ -59,7 +68,7 @@ nav {
 		max-width: 100%;
 	}
 
-	.navigation {
+	nav {
 		position: static;
 		max-width: 100%;
 		max-height: 10em;
