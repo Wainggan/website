@@ -20,7 +20,7 @@ imagine, if you will, that we have a group of people, and we line them up one by
 
 so what we can do is go through each member, and check their identification to see if the person before them truly does go before. if the person is out of place, that means either they made a mistake, or they is an fraud. in either case, we should treat them with suspicion and get them out of the line. can't be too careful.
 
-however... i'll just vent to you, those imposters are too suspicious! i'd personally vote to kick them off the group all together, and for the purposes of the algorithm, that's what we'll do. after that, we now have a line of people who are clear! 
+however... i'll just vent to you, those imposters are too suspicious! i'd personally vote to kick them off the group all together, and for the purposes of the algorithm, that's what we'll do. after that, we now have a crew of people who are clear! 
 
 note that we only had to go through all the people once, guaranteeing O(n) time complexity. that's fast! 
 
@@ -107,7 +107,7 @@ the natively implemented sorting algorithm performs *96.91%* slower. i'm quite p
 
 ## improvement
 
-one flaw with the algorithm is that it creates a new array, which can be quite slow. we can fix this is by doing the sort "in-place".
+one flaw with the algorithm is that it creates a new array and repopulates it, which can be quite slow. this is actually often a big bottle neck with other sorting algorithms. we can fix this is by doing the sort "in-place".
 
 here's what I came up with:
 ```
@@ -153,4 +153,4 @@ suddenly the normal imposterSort is *98.9%* slower. pretty good, imo!
 
 the imposter sort is ridiculously fast for the power it provides. i hope you consider using it in your next project. 
 
-
+have a good day :3

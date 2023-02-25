@@ -1,4 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.3.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2023-02-24T12:00:09-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">parchi’s dumpster fire</title><entry><title type="html">imposter sort</title><link href="http://localhost:4000/2023/02/24/imposterSort.html" rel="alternate" type="text/html" title="imposter sort" /><published>2023-02-24T00:00:00-08:00</published><updated>2023-02-24T00:00:00-08:00</updated><id>http://localhost:4000/2023/02/24/imposterSort</id><content type="html" xml:base="http://localhost:4000/2023/02/24/imposterSort.html"><![CDATA[<p>hi. i have invented a new sorting algorithm, that I am naming “imposter sort”.</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>imposter sort</title>
+	<link rel="stylesheet" href="/assets/css/styles.css">
+  </head>
+  <body>
+	<nav class="area">
+	navigation
+	<hr>
+
+	<ul>
+		<li><a href="/">home</a></li>
+		<li><a href="/about.html">about me</a></li>
+		<li><a href="/blog.html">blog</a></li>
+		<li>
+			<a href="/portfolio/index.html">stuffs!</a>
+
+			<ul>
+				<li><a href="/portfolio/games.html">games</a></li>
+				<li><a href="/portfolio/projects.html">projects</a></li>
+				<li><a href="/portfolio/art.html">drawings</a></li>
+				<li><a href="/portfolio/music.html">music</a></li>
+			</ul>
+
+		</li>
+		<li><a href="/links.html">links</a></li>
+		<li><a>art i really like</a></li>
+	</ul>
+
+</nav>
+    <div class="area"><span style="font-size:0.7em;">24 Feb 2023</span>
+<h1>imposter sort</h1>
+
+<p>hi. i have invented a new sorting algorithm, that I am naming “imposter sort”.</p>
 
 <p>the algorithm is quite simple, but don’t let that distract from it’s power: it is the only comparison based algorithm that achieves O(n) time. for comparison (heh), <a href="https://en.wikipedia.org/wiki/Quicksort">quick sort</a> - one of the most popular sorting algorithms for its speed - has a best case time complexity is O(n log n): much slower.</p>
 
@@ -137,104 +172,10 @@ imposterSort(array);
 
 <p>the imposter sort is ridiculously fast for the power it provides. i hope you consider using it in your next project.</p>
 
-<p>have a good day :3</p>]]></content><author><name></name></author><summary type="html"><![CDATA[hi. i have invented a new sorting algorithm, that I am naming “imposter sort”.]]></summary></entry><entry><title type="html">blog update</title><link href="http://localhost:4000/2023/02/23/blogupdate.html" rel="alternate" type="text/html" title="blog update" /><published>2023-02-23T00:00:00-08:00</published><updated>2023-02-23T00:00:00-08:00</updated><id>http://localhost:4000/2023/02/23/blogupdate</id><content type="html" xml:base="http://localhost:4000/2023/02/23/blogupdate.html"><![CDATA[<p>i switched to jekyll because its a lot easier to use than completely hand written html + directories. 
-for anyone (morbidly) interested, heres the code i wrote for my method of generating blog pages from markdown files on the client side</p>
-
-<p>first, heres what that <code class="language-plaintext highlighter-rouge">data.json</code> file looked like:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
-  "posts": [
-    {
-      "file": "test.md",
-      "name": "Test",
-      "date": "feb 20, 2023",
-      "update": "",
-      "description": "a test of the blog"
-    }
-  ]
-}
-</code></pre></div></div>
-
-<p>this ran in the “blog index” page:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;(function(){
-	var target = document.getElementById('posts');
-	fetch("blog/data.json").then(function(e){
-		return e.json();
-	}).then(function(e){
-		for (var i = 0; i &lt; e.posts.length; i++) {
-			var element = document.createElement("div");
-			// styling
-			element.classList.add('box');
-			element.style.marginTop = '1em';
-
-			element.innerHTML = 
-				"&lt;a href=\"./blogpost?i=" + 
-				e.posts[i].file + "\"&gt;&lt;h2&gt;" + 
-				e.posts[i].name + 
-				"&lt;/h2&gt;&lt;/a&gt; &lt;hr&gt; &lt;br&gt;" + 
-				e.posts[i].description;
-			target.appendChild(element);
-		}
-	});
-})();
-</code></pre></div></div>
-
-<p>pretty self explanitory I hope.</p>
-
-<p>this ran in the “blog post” page:</p>
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// note: showdown.min.js is loading like &lt;script src="./showdown.min.js"&gt;&lt;/script&gt; before this.
-// additionally, the url has a parameter named "i" storing the name of the target markdown file, like ".../?i=test.md"
-;(function(){
-	var target = document.getElementById('content');
-	target.innerHTML = "loading...";
-
-	var converter = new showdown.Converter({
-	strikethrough: true,
-	customizedHeaderId: true,
-	omitExtraWLInCodeBlocks: true,
-	tasklists: true,
-	});
-	
-	fetch("blog/data.json").then(function(e){
-		return e.json();
-	}).then(function(e){
-		var pos = (new URLSearchParams(window.location.search)).get("i");
-		var filedata = 'error';
-		for (var i = 0; i &lt; e.posts.length; i++) {
-				if (e.posts[i].file == pos) {
-				filedata = e.posts[i];
-				break;
-			}
-		}
-
-		fetch("blog/" + filedata.file).then(function(e){
-			return e.text();
-		}).then(function(e){
-			var prestr = "posted on " + filedata.date;
-			if (filedata.update &amp;&amp; filedata.update != "") prestr += ", updated on " + filedata.update;
-			target.innerHTML = "&lt;span style=\"font-size:0.7em\"&gt;" + prestr + "&lt;/span&gt;" + converter.makeHtml(e);
-		});
-	
-	});
-})();
-</code></pre></div></div>
-
-<p>also self-explanitory.</p>
-
-<p>that’s all I have for now, I felt that it was a silly method worth sharing. <br />
-have a nice day :3</p>]]></content><author><name></name></author><summary type="html"><![CDATA[i switched to jekyll because its a lot easier to use than completely hand written html + directories. for anyone (morbidly) interested, heres the code i wrote for my method of generating blog pages from markdown files on the client side]]></summary></entry><entry><title type="html">welcome!</title><link href="http://localhost:4000/2023/02/20/welcome.html" rel="alternate" type="text/html" title="welcome!" /><published>2023-02-20T00:00:00-08:00</published><updated>2023-02-20T00:00:00-08:00</updated><id>http://localhost:4000/2023/02/20/welcome</id><content type="html" xml:base="http://localhost:4000/2023/02/20/welcome.html"><![CDATA[<p>welcome to my humble abode, my corner if you will. i’m parchi, the person responsible for this mess.</p>
-
-<p>in this blog, i’ll write about whatever I feel like, but it will likely be primarly educational tutorial-ish things about computer science or music production. i’ll also probably talk about what i’m doing with my current projects/games. who knows, maybe i’ll even do rants about how much i like a game or something, i have literally no idea what im going to do with this thing.</p>
-
-<p>now <em>hopefully</em>, I can get myself to continually update this place with whatever. i decided to finally make a <a href="https://docs.google.com/spreadsheets/d/1YjrTjcnHM_Ycu58MMa9wh1ZrOORpj4Qi06B-nJU0sp8/edit?usp=sharing">google spreadsheet</a> of all my project ideas and rabbit holes to get into in the future, which i’ll add to whenever I find anything. it should be enough to get me to continue updating it, but I’m not exactly known for being consistent.</p>
-
-<h2 id="how">how</h2>
-
-<p>for anyone interested in the tech,</p>
-
-<p>i <em>hate</em> html. as a temporary fix until i get a static site generator working, i’m writing this in Markdown, which I store in some folder somewhere, along with <a href="https://parchii.neocities.org/blog/data.json">some json file with the meta data</a> for each post. the <a href="https://parchii.neocities.org/blogindex">blog index page</a> fetches that json file, and displays each post. when you click a post, it brings you to the blog page page (what you are looking at right now) along with a url parameter for which file to get. it then just gets that file, simple.</p>
-
-<p>i compile the markdown using the <a href="https://github.com/showdownjs/showdown">Showdown Markdown converter</a>(chosen because it was written in javascript and generated html <em>text</em>, unlike CommonMark which directly rendered html, and I couldn’t be bothered to see if I could fix that). everything else(css, html layout, javascript) was written by me.</p>
-
-<h2 id="what-now">what now</h2>
-
-<p>no idea. have a nice day :3</p>]]></content><author><name></name></author><summary type="html"><![CDATA[welcome to my humble abode, my corner if you will. i’m parchi, the person responsible for this mess.]]></summary></entry></feed>
+<p>have a good day :3</p>
+</div>
+	<div class="area">
+made with love. contact: <a href="mailto:wainggan@gmail.com">wainggan@gmail.com</a>, please don't expect quick replies
+</div>
+  </body>
+</html>
