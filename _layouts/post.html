@@ -1,7 +1,9 @@
 ---
 layout: default
 ---
+<div class="area">
 <span style="font-size:0.7em;">{{ page.date | date_to_string }}{% if page.update %}, updated {{ page.update | date_to_string }}{% endif %}</span>
 <h1>{{ page.title }}</h1>
 
 {{ content }}
+</div>

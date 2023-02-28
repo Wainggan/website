@@ -3,11 +3,11 @@ layout: default
 title: "parchi's dumpster fire"
 ---
 
-<div class="box">
+<div class="area">
 	<h1>parchi's dumpster fire</h1>
 </div>
 
-<div class="box">
+<div class="area">
 	<p>welcome to my haphazardly put together little corner of the internet!</p>
 	<hr>
 	<p>
@@ -20,22 +20,22 @@ title: "parchi's dumpster fire"
 	</p>
 	<p>
 		this site was put together using whatever html knowledge I happened to know, so i apologise if the 
-		layout is a bit odd or broken. yes, i know the navigation bar is too far from the main content. <br/>
+		layout is a bit odd or broken. <br/>
 
 		i plan to use this site as a personal outlet for whatever my slightly wacky brain comes up with, the site is
-		only public to pay my tribute to the entropy of the internet. <br> maybe i'll be tangibly useful by talking
-		educational things about computer science, game design, drawing, music production, as I continually learn more
-		about the stuff. <br>
+		only public to pay my tribute to the entropy of the internet. <br> 
+		maybe i'll be tangibly useful by talking educational things about computer science, game design, 
+		drawing, music production, as I continually learn more about the stuff. <br>
 	</p>
 	<p>expect a lot of todo's to be littered around.</p>
 </div>
 
-<div class="box">
+<div class="area">
 	updates
 	<hr>
 	<div style="max-height: 18em; overflow-y: scroll;">
 		{% for post in site.data.update %}
-		<div class="card">
+		<div class="box">
 			{{ post.date }}
 			<hr>
 			{{ post.text }}
@@ -44,6 +44,13 @@ title: "parchi's dumpster fire"
 	</div>
 </div>
 
-<div class="box">
+<div class="area">
 	insert something here
+	<br/>
+	<p>todo:</p>
+	<ul>
+		<li>links page</li>
+		<li>images</li>
+		<li>old layouts page</li>
+	</ul>
 </div>
